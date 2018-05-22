@@ -33,3 +33,19 @@ class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
     submit = SubmitField('Submit')
+    
+    # Introduces logic to prevent a non-unique username error on the edit profile form
+    # No will prevent submit and issue an error notification if user attempts to change user name to one that already exists
+    
+    # Establishes the active users username as original_username when loading the EditProfileForm
+    def __init__(self, original_username, *args, **kwargs):
+        super(EditProfileForm, self).__init__(*args, **kwargs)
+        self.original_username = original_username
+     
+    # Checks if the username submitted through EditProfileForm equals original_username
+    # If not euqal querys the User db table to see if the name exists and raises a ValidationError if True
+    def validate_username(self, username):
+        if username.data != self.original_username:
+            user = User.query.filter_by(username=self.username.data).first()
+            if user is not None:
+                raise ValidationError('Please use a different username.')

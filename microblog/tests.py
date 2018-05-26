@@ -3,6 +3,7 @@ import unittest
 from app import app, db
 from app.models import User, Post
 
+
 class UserModelCase(unittest.TestCase):
     def setUp(self):
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
@@ -20,7 +21,9 @@ class UserModelCase(unittest.TestCase):
 
     def test_avatar(self):
         u = User(username='john', email='john@example.com')
-        self.assertEqual(u.avatar(128), ('http://www.gravatar.com/avatar/d4c74594d841139328695756648b6bd6?d=identicon&s=128'))
+        self.assertEqual(u.avatar(128), ('http://www.gravatar.com/avatar/'
+                                         'd4c74594d841139328695756648b6bd6?d'
+                                         '=identicon&s=128'))
 
     def test_follow(self):
         u1 = User(username='john', email='john@example.com')
@@ -82,6 +85,7 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(f2, [p2, p3])
         self.assertEqual(f3, [p3, p4])
         self.assertEqual(f4, [p4])
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

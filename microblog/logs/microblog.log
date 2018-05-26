@@ -34,3 +34,4 @@ Traceback (most recent call last):
 UndefinedError: 'current' is undefined
 2018-05-22 17:00:09,994 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
 2018-05-22 17:01:52,739 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-22 17:31:29,273 INFO: Microblog startup [in /home/scott/python_env/dictionary_game_2018/microblog/app/__init__.py:43]

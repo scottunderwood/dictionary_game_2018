@@ -1,37 +1,7 @@
-2018-05-22 16:58:49,872 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 16:59:05,157 ERROR: Exception on /user/josh [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 81, in user
-    return render_template('user.html', user=user, posts=posts)
-  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 134, in render_template
-    context, ctx.app)
-  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 116, in _render
-    rv = template.render(context)
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/base.html", line 30, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/user.html", line 14, in block "content"
-    {% elif not current.user.is_following(user) %}
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-UndefinedError: 'current' is undefined
-2018-05-22 17:00:09,994 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 17:01:52,739 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 17:31:29,273 INFO: Microblog startup [in /home/scott/python_env/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-30 09:09:47,597 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-30 09:13:27,978 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-30 09:16:44,436 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-31 08:43:37,857 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:45]
+2018-05-31 08:55:03,398 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:45]
+2018-05-31 09:03:10,376 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:45]
+2018-05-31 09:03:21,173 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:45]

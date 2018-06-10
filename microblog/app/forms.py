@@ -67,6 +67,6 @@ class PostForm(FlaskForm):
 
 # Initial attempt at creating a basic game form that makes you ener your name and then press a button to start the game script
 class GameForm(FlaskForm):
-    player_name = TextAreaField('Player Name', validators=[
-                                DataRequired(), Length(min=1, max=24)])
+    player_name = StringField('Player Name', validators=[
+        DataRequired(), Length(min=1, max=24)])
     start_game = SubmitField('Start Game!')

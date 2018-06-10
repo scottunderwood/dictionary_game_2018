@@ -1,5 +1,4 @@
-2018-05-22 16:58:49,872 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 16:59:05,157 ERROR: Exception on /user/josh [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+2018-05-29 09:21:10,619 ERROR: Exception on /index [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -13,8 +12,76 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 81, in user
-    return render_template('user.html', user=user, posts=posts)
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 29, in index
+    return render_template('index.html', title='Home', form=form, posts=posts)
+  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/index.html", line 17, in template
+    {% end if %}
+TemplateSyntaxError: Encountered unknown tag 'end'. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2018-05-29 09:21:14,040 ERROR: Exception on /explore [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 136, in explore
+    return render_template('index.html', title='Explore', posts=posts)
+  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/index.html", line 17, in template
+    {% end if %}
+TemplateSyntaxError: Encountered unknown tag 'end'. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2018-05-29 09:30:09,081 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-30 08:36:00,913 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-30 08:36:33,917 ERROR: Exception on /explore [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 138, in explore
+    return render_template('index.html', title='Explore', posts=posts)
   File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 134, in render_template
     context, ctx.app)
   File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 116, in _render
@@ -23,21 +90,14 @@ Traceback (most recent call last):
     return self.environment.handle_exception(exc_info, True)
   File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/user.html", line 1, in top-level template code
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/index.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/base.html", line 30, in top-level template code
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/base.html", line 31, in top-level template code
     {% block content %}{% endblock %}
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/user.html", line 14, in block "content"
-    {% elif not current.user.is_following(user) %}
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-UndefinedError: 'current' is undefined
-2018-05-22 17:00:09,994 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 17:01:52,739 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 17:31:29,273 INFO: Microblog startup [in /home/scott/python_env/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-29 08:58:46,328 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-29 09:17:46,465 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-29 09:20:52,650 ERROR: Exception on /index [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/index.html", line 18, in block "content"
+    {% for post in posts %}
+TypeError: 'Pagination' object is not iterable
+2018-05-30 08:39:11,133 ERROR: Exception on /explore [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -51,55 +111,24 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 29, in index
-    return render_template('index.html', title='Home', form=form, posts=posts)
-  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 133, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/loaders.py", line 125, in load
-    code = environment.compile(source, name, filename)
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 591, in compile
-    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 138, in explore
+    return render_template('index.html', title='Explore', posts=posts.items)
+  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
   File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/index.html", line 17, in template
-    {% end if %}
-TemplateSyntaxError: Encountered unknown tag 'end'. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
-2018-05-29 09:21:04,183 ERROR: Exception on /index [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 29, in index
-    return render_template('index.html', title='Home', form=form, posts=posts)
-  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 133, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/loaders.py", line 125, in load
-    code = environment.compile(source, name, filename)
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 591, in compile
-    self.handle_exception(exc_info, source_hint=source_hint)
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/index.html", line 17, in template
-    {% end if %}
-TemplateSyntaxError: Encountered unknown tag 'end'. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/base.html", line 31, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/index.html", line 18, in block "content"
+    {% for post in posts %}
+TypeError: 'Pagination' object is not iterable
+2018-05-30 08:39:28,536 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-30 08:57:37,023 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-30 09:04:16,250 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-30 09:06:07,660 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]

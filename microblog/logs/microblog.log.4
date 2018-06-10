@@ -1,72 +1,5 @@
-2018-05-21 08:44:44,049 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-21 08:44:59,194 ERROR: Exception on /edit_profile [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 91, in edit_profile
-    db.session.commit()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/scoping.py", line 153, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 943, in commit
-    self.transaction.commit()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 467, in commit
-    self._prepare_impl()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 447, in _prepare_impl
-    self.session.flush()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2254, in flush
-    self._flush(objects)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2380, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2344, in _flush
-    flush_context.execute()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 391, in execute
-    rec.execute(self)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 556, in execute
-    uow
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 177, in save_obj
-    mapper, table, update)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 768, in _emit_update_statements
-    execute(statement, multiparams)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username [SQL: u'UPDATE user SET username=?, about_me=? WHERE user.id = ?'] [parameters: (u'nicole', u'All that you have, and all that you see, you owe to me...', 1)] (Background on this error at: http://sqlalche.me/e/gkpj)
-2018-05-21 08:56:44,081 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-21 09:07:15,888 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-21 09:09:03,608 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-21 15:46:07,618 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-21 15:46:56,382 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 16:15:13,047 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 16:16:49,184 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 16:17:47,509 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 16:21:25,750 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 16:56:49,452 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
-2018-05-22 16:57:30,434 ERROR: Exception on /user/josh [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+2018-05-22 16:58:49,872 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-22 16:59:05,157 ERROR: Exception on /user/josh [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -99,7 +32,12 @@ Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 430, in getattr
     return getattr(obj, attribute)
 UndefinedError: 'current' is undefined
-2018-05-22 16:57:43,076 ERROR: Exception on /user/nicole [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+2018-05-22 17:00:09,994 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-22 17:01:52,739 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-22 17:31:29,273 INFO: Microblog startup [in /home/scott/python_env/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-29 08:58:46,328 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-29 09:17:46,465 INFO: Microblog startup [in /home/cabox/workspace/dictionary_game_2018/microblog/app/__init__.py:43]
+2018-05-29 09:20:52,650 ERROR: Exception on /index [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -113,22 +51,55 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 81, in user
-    return render_template('user.html', user=user, posts=posts)
-  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 134, in render_template
-    context, ctx.app)
-  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 116, in _render
-    rv = template.render(context)
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 29, in index
+    return render_template('index.html', title='Home', form=form, posts=posts)
+  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
   File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/base.html", line 30, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/user.html", line 14, in block "content"
-    {% elif not current.user.is_following(user) %}
-  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-UndefinedError: 'current' is undefined
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/index.html", line 17, in template
+    {% end if %}
+TemplateSyntaxError: Encountered unknown tag 'end'. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2018-05-29 09:21:04,183 ERROR: Exception on /index [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/routes.py", line 29, in index
+    return render_template('index.html', title='Home', form=form, posts=posts)
+  File "/usr/local/lib/python2.7/dist-packages/flask/templating.py", line 133, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/usr/local/lib/python2.7/dist-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/cabox/workspace/dictionary_game_2018/microblog/app/templates/index.html", line 17, in template
+    {% end if %}
+TemplateSyntaxError: Encountered unknown tag 'end'. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.

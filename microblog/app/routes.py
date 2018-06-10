@@ -105,7 +105,7 @@ def register():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    page = requests.args.get('page', 1, type=int)
+    page = request.args.get('page', 1, type=int)
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
         page, app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('user', username=user.username, page=posts.next_num) \
@@ -186,6 +186,11 @@ def explore():
 def gamepage():
     form = GameForm()
     if form.validate_on_submit():
-        flash('the game would run now')
-        return render_template('gamepage.html', title='Game Page', game_output=game_logic_v2.game(5, ['scott', 'nicole', 'jane', 'don', 'meg']))
+        game_results_list = []
+        game_results = game_logic_v2.game(
+            5, ['scott', 'nicole', 'jane', 'don', 'meg'])
+        for r in game_results:
+            game_results_list.append(
+                game_results[r]['player_name'] + ': ' + str(game_results[r]['player_score']))
+        return render_template('gamepage.html', title='Game Page', game_output=game_results_list)
     return render_template('gamepage.html', title='Game Page', form=form)

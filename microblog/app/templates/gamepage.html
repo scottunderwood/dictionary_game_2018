@@ -16,8 +16,8 @@
         </form>
     {% endif %}
     {% if game_output %}
-        <p>
-            {{ game_output }}
-        </p>
+        {% for player in game_output %}
+            <p>{{ player }}</p>
+        {% endfor %}
     {% endif %}
 {% endblock %}

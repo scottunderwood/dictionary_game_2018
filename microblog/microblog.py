@@ -1,3 +1,5 @@
+# this file is a python script at the top-level that defines the Flask application instance
+
 from app import app, db
 from app.models import User, Post
 

@@ -3,11 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_mail import Mail
 from flask_login import LoginManager
+# imports the configuration file
 from config import Config
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 
+# creates the application object as an instance of class Flask imported from the flask package
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
@@ -44,5 +46,10 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
 
-
+# routes module is imported at the bottom and not at the top of the script as 
+# it is always done. The bottom import is a workaround to circular imports, a 
+# common problem with Flask applications. You are going to see that the routes 
+# module needs to import the app variable defined in this script, so putting one 
+# of the reciprocal imports at the bottom avoids the error that results from the 
+# mutual references between these two files.
 from app import routes, models, errors

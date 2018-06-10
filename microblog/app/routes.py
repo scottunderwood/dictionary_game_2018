@@ -1,3 +1,8 @@
+# The routes are the different URLs that the application implements. 
+# In Flask, handlers for the application routes are written as Python functions, 
+# called view functions. View functions are mapped to one or more route URLs so 
+# that Flask knows what logic to execute when a client requests a given URL.
+
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
@@ -13,7 +18,15 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
-
+# The two strange @app.route lines above the function are decorators, a unique 
+# feature of the Python language. A decorator modifies the function that follows 
+# it. A common pattern with decorators is to use them to register functions as 
+# callbacks for certain events. In this case, the @app.route decorator creates an 
+# association between the URL given as an argument and the function. In this 
+# example there are two decorators, which associate the URLs / and /index to 
+# this function. This means that when a web browser requests either of these two 
+# URLs, Flask is going to invoke this function and pass the return value of it 
+# back to the browser as a response.
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
@@ -31,6 +44,11 @@ def index():
         if posts.has_next else None
     prev_url = url_for('index', page=posts.prev_num) \
         if posts.has_prev else None
+    # return render_template() comes from the Flask framework and invokes the jinja2 template 
+    # engine returns a specific html template from the template folder when the route specified 
+    # above is called.  the additional arguments included in the function draw on the other 
+    # code in the view function, and inform what appears in the variable sections of the template's html
+    # jinja2 replaces placeholders captured in {{ }} and control statements captured in {% %}
     return render_template('index.html', title='Home', form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
 
 

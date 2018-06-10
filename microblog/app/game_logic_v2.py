@@ -53,7 +53,8 @@ def shuffle_definitions(definitions, round_host):
 def vote_unshuffle(votes, shuffled_definitions, definitions):
     unshuffled_votes = {}
     for k, v in votes.items():
-        unshuffled_votes[k] = find_key(definitions, shuffled_definitions[v - 1][3:])
+        unshuffled_votes[k] = find_key(
+            definitions, shuffled_definitions[v - 1][3:])
     return unshuffled_votes
 
 
@@ -75,7 +76,7 @@ def score_update(host_num, player_dict, unshuffled_votes):
 def host_rotation(host_num, player_count, round_number):
     if round_number == 0:
         host_num = random.randint(1, player_count)
-        print('first round')
+        # print('first round')
     else:
         if host_num == player_count - 1:
             host_num = 1
@@ -90,13 +91,14 @@ def game_round(host_num, player_dict):
     # needs to cause the round word to be visually pushed onto each of the players screens
     push_word(r_word)
 
-    responses = {1: 'test response one', 2: 'test response two', 3: 'test response three', 4: 'test response four', 5: 'test response five'}
+    responses = {1: 'test response one', 2: 'test response two',
+                 3: 'test response three', 4: 'test response four', 5: 'test response five'}
     response_type = 'define'
     definitions = collect_responses(responses, response_type, player_dict)
 
     shuffled_definitions = shuffle_definitions(definitions, host_num)
-    for d in shuffled_definitions:
-        print(d)
+    # for d in shuffled_definitions:
+    # print(d)
 
     votes = {1: 2, 2: 3, 3: 2, 4: 4, 5: 2}
     # round_scores = collect_responses(votes, response_type, player_dict)
@@ -105,12 +107,12 @@ def game_round(host_num, player_dict):
 
     player_dict = score_update(host_num, player_dict, unshuffled_votes)
 
-    print(player_dict)
+    # print(player_dict)
     return player_dict
 
 
-player_count = 5
-player_names = ['scott', 'nicole', 'jane', 'don', 'meg']
+# player_count = 5
+# player_names = ['scott', 'nicole', 'jane', 'don', 'meg']
 
 
 def game(player_count, name_list):
@@ -121,10 +123,12 @@ def game(player_count, name_list):
 
     while round_number < 3:  # player_count * 2:
         host_num = host_rotation(host_num, player_count, round_number)
-        print(host_num)
-        game_round(host_num, player_dict)
+        # print(host_num)
+        round_outcome = game_round(host_num, player_dict)
         round_number += 1
-        print(round_number)
+        # print(round_number)
+
+    return round_outcome
 
 
-game(player_count, player_names)
+# game(player_count, player_names)

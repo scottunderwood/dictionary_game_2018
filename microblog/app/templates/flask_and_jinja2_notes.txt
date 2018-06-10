@@ -1,0 +1,8 @@
+jinja2 replaces placeholders captured in {{ }} and control statements 
+captured in {% %}.  Control statements include if/else/endif and for/endfor. 
+These represent parts of the page that are variable and will only be known at runtime 
+
+Jinja2 has a template inheritance feature. The block control statement 
+defines the place where the derived templates can insert themselves. Blocks are given a 
+unique name, which derived templates can reference when they provide their content. 
+The extends statement establishes the inheritance link between  two templates 

@@ -12,7 +12,7 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, Ga
 from app.models import User, Post
 from datetime import datetime
 # initial attempt at importing game logic so that it an be returned in the gamepage viewfunction
-import game_logic_v2
+from app.game_logic_v2 import *
 
 
 @app.before_request

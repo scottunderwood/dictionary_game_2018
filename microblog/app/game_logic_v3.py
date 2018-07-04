@@ -16,6 +16,7 @@ class DGPlayer(object):
         self.name = name
         self.id = uuid.uuid4()
         self.round_def = None
+        self.round_vote = None
         self.submitted = None
 
     def get_id(self):
@@ -25,9 +26,14 @@ class DGPlayer(object):
         return self.name
 
     def submit_definition(self, definition):
-        assert definition.type() == str
-        self.submitted = definition
+        assert type(definition) == str
+        self.round_def = definition
         return (self.id, definition)
+
+    def submit_vote(self, vote):
+        assert type(vote) == int
+        self.round_vote = vote
+        return (self.id, vote)
 
 
 # Below mirrors the "game_handler.py" section of the cards against online game
@@ -110,12 +116,9 @@ class DGGame:
     def get_player_count(self):
         return len(self.players)
 
-    # Potential location for def submit word
-
-    # Potential location for new_game
-
     def clean_up_round(self):
         for player in self.players:
+            player.round_def = None
             player.submitted = None
             self.is_picker = False
         # round word, round votes and round definitions all need to reset
@@ -132,17 +135,23 @@ class DGGame:
         Choose and return the picker. Picker is chosen randomly from the players in round 1 but then
         rotates through self.players until the end of the game
         """
-        player_count = self.get_player_count()
-        if self.round == 0:
-            picker_num = random.randint(0, player_count - 1)
-            self.picker = self.players[picker_num]
-        else:
-            prev_host_num = self.players.index(self.picker)
-            if prev_host_num == player_count - 1:
-                picker_num = 0
-            else:
-                picker_num += 1
-            self.picker = self.players[picker_num]
+        # blocked all below out to lock in the picker for score testing
+        #player_count = self.get_player_count()
+        # if self.round == 0:
+        #    picker_num = random.randint(0, player_count - 1)
+        #    self.picker = self.players[picker_num]
+        #    self.picker.is_picker == True
+        # else:
+        #    prev_host_num = self.players.index(self.picker)
+        #    if prev_host_num == player_count - 1:
+        #        picker_num = 0
+        #    else:
+        #        picker_num += 1
+        #    self.picker = self.players[picker_num]
+        #    self.players[player_num].is_picker == True
+        # return self.picker
+        self.picker = self.players[2]
+        self.picker.is_picker = True
         return self.picker
 
     # below are all functions called as part of the round function
@@ -154,17 +163,19 @@ class DGGame:
 
     def collect_definitions(self):
         # TODO Add time countdown for submission in future feature
-        while len(self.round_definitions) != len(self.players) - 1:
-            # will turn in to an active input prompt
-            self.round_definitions.append('fast')
-            # will turn in to an active input prompt
-            self.round_definitions.append('slow')
+        while len(self.round_definitions) != len(self.players):
+            # will turn in to an active input prompts
+            self.round_definitions.append(self.get_player_by_name(
+                player_name='Scott').submit_definition('fast')[1])
+            self.round_definitions.append(self.get_player_by_name(
+                player_name='George').submit_definition('slow')[1])
             # self.submission_count = 0
             # for player in self.players:
             # if player.submitted:
             # self.submission_count += 1
-        # will turn in to an active input prompt
-        self.round_definitions.append('auto')
+            # need a sepparate dedicated prompt for the round host
+            self.round_definitions.append(self.get_player_by_name(
+                player_name='Jenny').submit_definition('auto')[1])
         self.turn_state = TurnState.Sharing
         return self.round_definitions
 
@@ -181,11 +192,18 @@ class DGGame:
 
     def vote_on_definitions(self):
         # TODO Add time countdown for submission in future feature
-        while len(self.round_votes) != len(self.players) - 1:
+        while len(self.round_votes) != len(self.players):
+            player_num = 0
             # will turn in to an active input prompt
-            random_vote = random.randint(1, len(self.players))
-            # also need a mechanism for registering which player made each vote
-            self.round_votes.append(random_vote)
+            # turning off random voting for testing purposes
+            # random_vote = random.randint(1, len(self.players))
+            self.round_votes.append(self.get_player_by_name(
+                player_name='Scott').submit_vote(1)[1])
+            self.round_votes.append(self.get_player_by_name(
+                player_name='George').submit_vote(1)[1])
+            # need to remove this final vote event for the round picker
+            self.round_votes.append(self.get_player_by_name(
+                player_name='Jenny').submit_vote(1)[1])
             # self.submission_count = 0
             # for player in self.players:
             # if player.submitted:
@@ -193,7 +211,34 @@ class DGGame:
         self.turn_state = TurnState.Scoring
         return self.round_votes
 
-    # def round_scoring(self):
+    def find_definer(self, lookup_deff):
+        for p in self.players:
+            if p.round_def == lookup_deff:
+                return p.name
+
+    def find_voted_definition(self, vote):
+        return self.round_definitions[vote - 1]
+
+    def round_scoring(self):
+        true_definition = None
+        for p in self.players:
+            if p.is_picker == True:
+                true_definition = p.round_def
+        correct_votes = 0
+        for pl in self.players:
+            if pl.is_picker == False and self.find_voted_definition(pl.round_vote) == true_definition:
+                pl.score += 1
+                correct_votes += 1
+            elif pl.is_picker == False and self.find_voted_definition(pl.round_vote) != pl.round_def:
+                for other_player in self.players:
+                    if self.find_voted_definition(pl.round_vote) == other_player.round_def:
+                        other_player.score += 1
+            elif pl.is_picker == False and self.find_voted_definition(pl.round_vote) == pl.round_def:
+                pass
+        if correct_votes == 0:
+            for p in self.players:
+                if p.is_picker == True:
+                    p.score += 3
 
     def run_round(self):
         self.picker = self.get_picker()
@@ -201,8 +246,8 @@ class DGGame:
         print(self.picker.get_id())
         self.round_word = self.pick_word()
         self.round_definitions = self.collect_definitions()
-        self.shuffle_definitions()
+        # turned off shuffle so that the find definer test continues to work
+        # self.shuffle_definitions()
         self.present_definitions()
         self.vote_on_definitions()
-
-        # push word to players
+        self.round_scoring()

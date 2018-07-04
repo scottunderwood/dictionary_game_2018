@@ -38,11 +38,15 @@ class TestNewGame(unittest.TestCase):
         assert test_game.get_player_by_name(player_name='Kevin') == None
         assert len(test_game.players) == 3
         test_game.run_round()
-        print(len(test_game.players))
-        print(len(test_game.round_votes))
         assert test_game.round_word == 'car'
         assert len(test_game.round_definitions) == 3
-        assert len(test_game.round_votes) == 2
+        assert len(test_game.round_votes) == 3
+        assert test_game.get_player_by_name(
+            player_name='Scott').round_def == 'fast'
+        assert test_game.find_definer(
+            test_game.round_definitions[1]) == 'George'
+        assert test_game.get_player_by_name(player_name='Jenny').score == 3
+        assert test_game.get_player_by_name(player_name='Scott').score == 1
 
 
 if __name__ == '__main__':
